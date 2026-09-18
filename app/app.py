@@ -20,12 +20,12 @@ def health():
 def echo():
     name = request.args.get("name", "student")
     command = "echo " + name
-    result = subprocess.run(
-        command,
-        shell=True,
-        capture_output=True,
-        text=True
-    )
+   result = subprocess.run(
+    ["echo", name],
+    capture_output=True,
+    text=True,
+    check=False
+	)
     return result.stdout
 
 if __name__ == "__main__":
